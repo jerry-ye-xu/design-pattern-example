@@ -1,11 +1,11 @@
-package BallMomento;
+package BallMemento;
 
 import Model.Ball;
 
-public class BallMomento {
+public class BallMemento {
     private Ball ball;
 
-    public BallMomento(Ball ball) {
+    public BallMemento(Ball ball) {
         this.ball =  new Ball(ball);
     }
 

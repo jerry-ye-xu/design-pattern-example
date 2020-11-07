@@ -1,7 +1,7 @@
 package Model;
 
 import BallBehaviour.BallBehaviour;
-import BallMomento.BallMomento;
+import BallMemento.BallMemento;
 import BallObserver.BallObserver;
 import javafx.scene.paint.Paint;
 
@@ -217,14 +217,14 @@ public class Ball implements Cloneable {
     }
 
     /*
-        BallMomento.BallMomento methods
+        BallMemento.BallMemento methods
      */
 
-    public BallMomento saveState() {
-        return new BallMomento(this);
+    public BallMemento saveState() {
+        return new BallMemento(this);
     }
 
-    public void restoreState(BallMomento stateBackup) {
+    public void restoreState(BallMemento stateBackup) {
         Ball prevState = stateBackup.getBall();
 
         this.xPos = prevState.xPos;

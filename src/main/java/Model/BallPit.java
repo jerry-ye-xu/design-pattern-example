@@ -1,5 +1,6 @@
 package Model;
 
+import BallMemento.*;
 import BallPrototype.ButtonCreateBall;
 import javafx.geometry.Point2D;
 import javafx.scene.layout.VBox;
@@ -12,12 +13,6 @@ import java.util.List;
 import BallBehaviour.BallBehaviourAccelerateToCorner;
 import BallBehaviour.BallBehaviourConstantSpeed;
 import BallBehaviour.BallBehaviourHaltImmediately;
-
-import BallMomento.BallMomento;
-import BallMomento.ButtonRestore;
-import BallMomento.ButtonSave;
-import BallMomento.BallPitMomento;
-import BallMomento.CareTaker;
 
 import BallObserver.BallObserver;
 import BallObserver.BallObserverSpeed;
@@ -162,19 +157,14 @@ public class BallPit {
 
     public void saveState() {
         System.out.println("Saving state...");
-        List<BallMomento> ballsMomento = new ArrayList<>();
+        List<BallMemento> ballsMemento = new ArrayList<>();
 
         for (Ball ball: balls) {
-            ballsMomento.add(new BallMomento(ball));
+            ballsMemento.add(new BallMemento(ball));
         }
-        BallPitMomento ballPitMomento = new BallPitMomento(ballsMomento);
+        BallPitMemento ballPitMemento = new BallPitMemento(ballsMemento);
 
-        System.out.println(ballPitMomento);
-        System.out.println(ballPitMomento.getBallsMomento());
-        System.out.println(ballPitMomento.getBallsMomento().get(0));
-        ballPitMomento.getBallsMomento().get(0).printInfo();
-
-        careTaker.addState(ballPitMomento);
+        careTaker.addState(ballPitMemento);
 
     }
 
@@ -184,12 +174,12 @@ public class BallPit {
             return;
         }
         System.out.println("Restoring state...");
-        BallPitMomento ballPitMomento = careTaker.getLatestState();
+        BallPitMemento ballPitMemento = careTaker.getLatestState();
         List<Ball> ballsRestored = new ArrayList<>();
 
-        for (BallMomento ballMomento: ballPitMomento.getBallsMomento()) {
-            ballMomento.printInfo();
-            ballsRestored.add(ballMomento.getBall());
+        for (BallMemento ballMemento : ballPitMemento.getBallsMemento()) {
+            ballMemento.printInfo();
+            ballsRestored.add(ballMemento.getBall());
         }
 
         this.balls = ballsRestored;

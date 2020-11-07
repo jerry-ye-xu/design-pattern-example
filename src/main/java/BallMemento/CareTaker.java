@@ -1,21 +1,21 @@
-package BallMomento;
+package BallMemento;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class CareTaker {
-    private List<BallPitMomento> ballPitMomentos;
+    private List<BallPitMemento> ballPitMomentos;
 
     public CareTaker() {
-        ballPitMomentos = new ArrayList<BallPitMomento>();
+        ballPitMomentos = new ArrayList<BallPitMemento>();
     }
 
-    public void addState(BallPitMomento ballPitMomento) {
+    public void addState(BallPitMemento ballPitMomento) {
         ballPitMomentos.add(ballPitMomento);
     }
 
-    public BallPitMomento getLatestState() {
-        BallPitMomento ballPitMomento = null;
+    public BallPitMemento getLatestState() {
+        BallPitMemento ballPitMomento = null;
         if (ballPitMomentos.size() > 0) {
             int idx = ballPitMomentos.size() - 1;
             ballPitMomento = ballPitMomentos.get(idx);

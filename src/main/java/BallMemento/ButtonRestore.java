@@ -1,4 +1,4 @@
-package BallMomento;
+package BallMemento;
 
 import Model.BallPit;
 
